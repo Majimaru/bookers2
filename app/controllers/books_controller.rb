@@ -1,12 +1,12 @@
 class BooksController < ApplicationController
   
-  # before_action :get_common_params, only: [:show]
-  
   def index
+    @user = User.find(current_user.id)
+    @book = Book.new
+    @books = Book.all
   end
 
   def show
-    # @user = User.find(params[:id])
     @book = Book.new
     @book_de = Book.find(params[:id])
     @user = @book_de.user

@@ -16,9 +16,4 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email])
   end
   
-  # def get_common_params
-  #   @user = User.find(params[:id])
-  #   @book = Book.new
-  # end
-  
 end
