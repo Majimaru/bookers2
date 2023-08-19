@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   get '/homes/about' => 'homes#about', as: 'about'
   
   resources :users, only: [:index, :show, :edit, :update]
-  resources :books, only: [:index, :show, :create]
+  resources :books, only: [:index, :show, :edit, :create, :destroy]
   
 end
