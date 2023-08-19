@@ -27,7 +27,8 @@
             <%= link_to "Edit", edit_book_path(@book_de), class: "btn btn-sm btn-success" %>
           </td>
           <td>
-            <%= link_to "Destroy", book_path(@book_de), method: :delete, class: "btn btn-sm btn-danger" %>
+            <%= link_to "Destroy", book_path(@book_de), method: :delete, class: "btn btn-sm btn-danger",
+                "data-confirm" => "本当に消しますか？"%>
           </td>
         <% end %>
       </tr>
