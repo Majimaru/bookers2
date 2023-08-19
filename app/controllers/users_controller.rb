@@ -1,14 +1,17 @@
 class UsersController < ApplicationController
   
   before_action :is_matching_login_user, only: [:edit, :update]
-  before_action :get_common_params, only: [:show]
+  # before_action :get_common_params, only: [:show]
   
   def index
+    @user = User.find(current_user.id)
+    @book = Book.new
+    @users = User.all
   end
 
   def show
-    # @user = User.find(params[:id])
-    # @book = Book.new
+    @user = User.find(params[:id])
+    @book = Book.new
     @books = @user.books
   end
 
