@@ -1,6 +1,8 @@
 <div class="col-sm-12 col-md-8 col-lg-5 mx-auto">
   <h2>User info</h2>
   
+  <%= render 'layouts/error', error: @user %>
+  
   <%= form_with model: @user do |f| %>
     <div class="form-group">
       <label fof="inputName">Name</label>

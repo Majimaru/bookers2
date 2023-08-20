@@ -1,5 +1,7 @@
+<%= render 'layouts/error', error: @book %>
+
 <div class="col-md-3">
-  <%= render 'users/common', user: @user, book: @book %>
+  <%= render 'layouts/common', user: @user, book: @book_new %>
 </div>
 
 <div class="col-md-8 offset-md-1">
