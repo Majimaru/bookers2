@@ -1,4 +1,4 @@
-<div class="col-sm-12 col-md-8 col-lg-5 mx-auto">
+<div class="col-sm-12 col-md-8 col-lg-5 mx-auto px-5 px-sm-0">
   <h2>User info</h2>
   
   <%= render 'layouts/error', error: @user %>
@@ -10,12 +10,14 @@
     </div>
     <div class="form-group">
       <label for="inputImage">Image</label>
-      <%= f.file_field :profile_image, id: "inputImage", accept: "image/*" %>
+      <%= f.file_field :profile_image, class: "form-control-file", id: "inputImage", accept: "image/*" %>
     </div>
     <div class="form-group">
       <label for="inputIntroduction">Introduction</label>
       <%= f.text_area :introduction,  class: "form-control", id: "inputIntroduction" %>
     </div>
-    <%= f.submit "Update User", method: :patch, class: "btn btn-secondary" %>
+    <div class="form-group">
+      <%= f.submit "Update User", method: :patch, class: "btn btn-secondary" %>
+    </div>
   <% end %>
 </div>

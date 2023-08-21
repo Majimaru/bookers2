@@ -1,7 +1,7 @@
-<%= render 'layouts/error', error: @book %>
-
-<div class="col-sm-12 col-md-8 col-lg-5 mx-auto">
+<div class="col-sm-12 col-md-8 col-lg-5 mx-auto px-sm-0">
   <h1>Editing Book</h1>
+  
+  <%= render 'layouts/error', error: @book %>
   
   <%= form_with model: @book do |f| %>
     <div class="form-group">
