@@ -31,6 +31,19 @@
                 "data-confirm" => "本当に消しますか？"%>
           </td>
         <% end %>
+        <% if @book_de.favorited_by?(current_user) %>
+          <td>
+            <%= link_to book_favorites_path(@book_de), method: :delete, class: "text-danger" do %>
+              <%= "♥#{@book_de.favorites.count}" %>
+            <% end %>
+          </td>
+        <% else %>
+          <td>
+            <%= link_to book_favorites_path(@book_de), method: :post do %>
+              <%= "♥#{@book_de.favorites.count}" %>
+            <% end %>
+          </td>
+        <% end %>
       </tr>
     </tbody>
   </table>
