@@ -28,9 +28,12 @@
               <%= book.title %>
             <% end %>
           </td>
-          <td>
-            <%= book.body %>
-          </td>
+          <td><%= book.body %></td>
+          <% if book.fovarited_b?(current_user) %>
+            <td>
+              <%= link_to book_favorites_path(book), method: :post 
+            </td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>
