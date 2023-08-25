@@ -44,7 +44,39 @@
             <% end %>
           </td>
         <% end %>
+        <td>
+          <%= "コメント数:#{@book_de.book_comments.count}" %>
+        </td>
       </tr>
     </tbody>
   </table>
+  
+  <table>
+    <% @book_de.book_comments.each do |comment| %>
+      <tr>
+        <td>
+          <%= link_to user_path(comment.user) do %>
+            <%= image_tag comment.user.get_profile_image(100, 100) %><br/>
+            <%= comment.user.name %>
+          <% end %>
+        </td>
+        <td><%= comment.comment %></td>
+        <% if comment.user == current_user %>
+          <td>
+            <%= link_to "Destroy", book_book_comment_path(@book_de, comment), 
+                method: :delete, class: "btn btn-sm btn-danger" %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+  
+  <%= form_with model: [@book_de, @book_comment] do |f| %>
+    <div class="form-group mt-4">
+      <%= f.text_area :comment, rows: 5, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "送信", class: "btn btn-sm btn-secondary" %>
+    </div>
+  <% end %>
 </div>
