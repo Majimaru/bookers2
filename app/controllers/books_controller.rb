@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   
-  before_action :is_matching_login_user, only: [:edit, :update]
+  before_action :is_matching_login_user, only: [:edit, :update, :destroy]
   
   def index
     @user     = User.find(current_user.id)
