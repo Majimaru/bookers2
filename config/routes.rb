@@ -1,19 +1,15 @@
 Rails.application.routes.draw do
   
-  get 'relationships/followings'
-  get 'relationships/followers'
   root to: 'homes#top'
-  
-  # get 'books/index'
-  # get 'books/show'
-  get '/home/about' => 'homes#about', as: 'about'
-  
   devise_for :users
+  
+  get '/home/about' => 'homes#about', as: 'about'
+  get 'search' => 'searches#search', as: 'search'
   
   resources :users, only: [:index, :show, :edit, :update] do
     resource :relationships, only: [:create, :destroy]
-    get 'followings' => 'relationships#followings', as: 'followings'
-    get 'followers' => 'relationships#followers', as: 'followers'
+    get 'followings' => 'relationships#followings'
+    get 'followers' => 'relationships#followers'
   end
   
   resources :books, only: [:index, :show, :edit, :create, :update, :destroy] do

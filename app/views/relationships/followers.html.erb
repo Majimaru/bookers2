@@ -1,13 +1,9 @@
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <h1>Follower Users</h1>
+<div class="col-12">
+  <h1>Follower Users</h1>
 
-      <% if @users.exists? %>
-        <%= render 'index', user: @users %>
-      <% else %>
-        <p>ユーザーはいません</p>
-      <% end %>
-    </div>
-  </div>
+  <% if @users.exists? %>
+    <%= render 'index', user: @users %>
+  <% else %>
+    <p>ユーザーはいません</p>
+  <% end %>
 </div>
