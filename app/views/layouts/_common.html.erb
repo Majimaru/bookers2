@@ -13,7 +13,7 @@
   </tr>
   <tr>
     <th>follows</th>
-    <td><%= link_to user.followings.count %></td>
+    <td><%= link_to user.followings.count, user_followings_path(user) %></td>
   </tr>
   <tr>
     <th>followers</th>

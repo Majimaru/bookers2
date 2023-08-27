@@ -1,2 +1,13 @@
-<h1>Relationships#followings</h1>
-<p>Find me in app/views/relationships/followings.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1>Follow Users</h1>
+      
+      <% if @users.count == 0 %>
+        <p>ユーザーはいません</p>
+      <% else %>
+        <%= render 'index', user: @users %>
+      <% end %>
+    </div>
+  </div>
+</div>
