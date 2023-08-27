@@ -3,7 +3,7 @@
     <div class="col-12">
       <% if @model == "User" %>
         <h2>Users search for "<%= @word %>"</h2>
-        <%= render "books/index", books: @books, hidden: "true" %>
+        <%= render "users/index", users: @users, hidden: "true" %>
       <% else %>
         <h2>Books search for "<%= @word %>"</h2>
         <%= render "books/index", books: @books, hidden: "true" %>
