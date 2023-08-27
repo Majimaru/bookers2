@@ -3,10 +3,10 @@
     <div class="col-12">
       <h1>Follow Users</h1>
       
-      <% if @users.count == 0 %>
-        <p>ユーザーはいません</p>
-      <% else %>
+      <% if @users.exists? %>
         <%= render 'index', user: @users %>
+      <% else %>
+        <p>ユーザーはいません</p>
       <% end %>
     </div>
   </div>
