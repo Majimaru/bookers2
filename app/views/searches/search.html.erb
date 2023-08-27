@@ -2,10 +2,10 @@
   <div class="row">
     <div class="col-12">
       <% if @model == "User" %>
-        <h2>Users search for "<%= @word %>"</h2>
+        <h3>Users search for "<%= @content %>"</h3>
         <%= render "users/index", users: @users, hidden: "true" %>
       <% else %>
-        <h2>Books search for "<%= @word %>"</h2>
+        <h3>Books search for "<%= @word %>"</h3>
         <%= render "books/index", books: @books, hidden: "true" %>
       <% end %>
     </div>
