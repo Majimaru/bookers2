@@ -22,6 +22,10 @@
         <td>
           <%= @book_de.body %>
         </td>
+        <td><%= render 'favorites/btn', book: @book_de %></td>
+        <td>
+          <%= "コメント数:#{@book_de.book_comments.count}" %>
+        </td>
         <% if @user == current_user %>
           <td>
             <%= link_to "Edit", edit_book_path(@book_de), class: "btn btn-sm btn-success" %>
@@ -31,14 +35,12 @@
                 "data-confirm" => "本当に消しますか？"%>
           </td>
         <% end %>
-        <td><%= render 'favorites/btn', book: @book_de %></td>
-        <td>
-          <%= "コメント数:#{@book_de.book_comments.count}" %>
-        </td>
       </tr>
     </tbody>
   </table>
   
-  <%= render "book_comments/index", book: @book_de %>
+  <div id="comment_index">
+    <%= render "book_comments/index", book: @book_de %>
+  </div>
   <%= render "book_comments/form", book: @book_de, comment: @book_comment %>
 </div>
