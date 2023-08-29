@@ -22,7 +22,7 @@
         <td>
           <%= @book_de.body %>
         </td>
-        <td class="favorite_btn_<%= @book_de.id %>">
+        <td id="favorite_btn_<%= @book_de.id %>">
           <%= render 'favorites/btn', book: @book_de %>
         </td>
         <td>
@@ -41,7 +41,7 @@
     </tbody>
   </table>
   
-  <div class="comment_index">
+  <div id="comment_index">
     <%= render "book_comments/index", book: @book_de %>
   </div>
   <%= render "book_comments/form", book: @book_de, comment: @book_comment %>

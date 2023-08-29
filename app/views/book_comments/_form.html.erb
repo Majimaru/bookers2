@@ -1,6 +1,6 @@
 <%= form_with model: [book, comment], local: false do |f| %>
   <div class="form-group mt-4">
-    <%= f.text_area :comment, rows: 5, class: "form-control" %>
+    <%= f.text_area :comment, rows: 5, id: "inputComment", class: "form-control" %>
   </div>
   <div class="form-group">
     <%= f.submit "送信", class: "btn btn-sm btn-secondary" %>
