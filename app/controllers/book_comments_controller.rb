@@ -2,9 +2,12 @@ class BookCommentsController < ApplicationController
   
   def create
     @book = Book.find(params[:book_id])
-    comment = current_user.book_comments.new(comment_params)
-    comment.book_id = @book.id
-    comment.save
+    @comment = current_user.book_comments.new(comment_params)
+    @comment.book_id = @book.id
+    
+    unless @comment.save
+      render :error
+    end
   end
 
   def destroy
