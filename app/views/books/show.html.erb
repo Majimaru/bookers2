@@ -25,8 +25,8 @@
         <td id="favorite_btn_<%= @book_de.id %>">
           <%= render 'favorites/btn', book: @book_de %>
         </td>
-        <td>
-          <%= "コメント数:#{@book_de.book_comments.count}" %>
+        <td id="comment_count_<%= @book_de.id %>">
+          コメント数:<%= @book_de.book_comments.count %>
         </td>
         <% if @user == current_user %>
           <td>
