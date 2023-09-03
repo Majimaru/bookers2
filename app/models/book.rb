@@ -7,6 +7,11 @@ class Book < ApplicationRecord
   validates :title, presence: true
   validates :body, presence: true, length: {maximum: 200}
   
+  validates :star, numericality: {
+    less_than_or_equal_to: 5,
+    greater_than_or_equal_to: 1
+  }, presence: true
+  
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
