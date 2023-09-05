@@ -48,29 +48,31 @@
     <label for="inputOpinion">Opinion</label>
     <%= f.text_area :body, class: "form-control", id: "inputOpinion" %>
   </div>
-  <div id="star">
-    <div class="form-group row">
-      <label for="inputRate" class="col-auto">Rate</label>
-      <%= f.hidden_field :star, class: "form-control", id: "inputRate" %>
-      <div class="col-auto" id="post_raty"></div>
-    </div>
+  <div class="form-group row" id="star">
+    <label for="inputRate" class="col-auto">Rate</label>
+    <%= f.hidden_field :star, class: "form-control", id: "inputRate" %>
+    <div class="col-auto" id="post_raty"></div>
   </div>
   
   <script>
-    // scriptファイルをどのidの部分に配置するかを指定
-    let elem = document.querySelector('#post_raty');
-    let opt = {  
-      //星画像の指定などのオプションをここに記述,
-      size     : 36,
-      starOff:  '<%= asset_path('star-off.png') %>',
-      starOn : '<%= asset_path('star-on.png') %>',
-      starHalf: "<%= asset_path('star-half.png') %>",
-      // bookモデルのstarカラムへ値を保存という意味になる
-      scoreName: 'book[star]',
-      // 今回は５段階評価で星半分評価は入力できないように設定
-      half: true,
-     };
-    raty(elem,opt);
+    $(document).on('turbolinks:load', function() {
+      // これがないとブラウザバックで星が増え続ける不具合が発生
+      $('#post_raty').empty();
+      // scriptファイルをどのidの部分に配置するかを指定
+      let elem = document.querySelector('#post_raty');
+      let opt = {  
+        //星画像の指定などのオプションをここに記述,
+        size     : 36,
+        starOff:  '<%= asset_path('star-off.png') %>',
+        starOn : '<%= asset_path('star-on.png') %>',
+        starHalf: "<%= asset_path('star-half.png') %>",
+        // bookモデルのstarカラムへ値を保存という意味になる
+        scoreName: 'book[star]',
+        // 今回は５段階評価で星半分評価は入力できるように設定
+        half: true,
+       };
+      raty(elem,opt);
+    });
   </script>
   
   <%= f.submit "Create Book", class: "btn btn-success" %>

@@ -28,6 +28,28 @@
         <td id="comment_count_<%= @book_de.id %>">
           コメント数:<%= @book_de.book_comments.count %>
         </td>
+
+        <td>
+          <div class="col-auto" id="star_<%= @book_de.id %>"></div>
+        
+          <script>
+            $(document).on('turbolinks:load', function() {
+              // scriptファイルをどのidの部分に配置するかを指定
+              let elem = document.querySelector('#star_<%= @book_de.id %>');
+              let opt = {  
+                //星画像の指定などのオプションをここに記述,
+                size     : 36,
+                starOff:  '<%= asset_path('star-off.png') %>',
+                starOn : '<%= asset_path('star-on.png') %>',
+                starHalf: "<%= asset_path('star-half.png') %>",
+                score: "<%= @book_de.star %>",
+                readOnly: true,
+               };
+              raty(elem,opt);
+            });
+          </script>
+        </td>
+
         <% if @user == current_user %>
           <td>
             <%= link_to "Edit", edit_book_path(@book_de), class: "btn btn-sm btn-success" %>
