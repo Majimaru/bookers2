@@ -1,5 +1,5 @@
-<%= link_to "新しい順", books_path(latest: "true") %> | 
-<%= link_to "評価の高い順", books_path(most_rated: "true") %>
+<%= link_to "新しい順", books_path(sort: "created_at desc") %> | 
+<%= link_to "評価の高い順", books_path(sort: "star desc") %>
 
 <table class="table table-hover table-inverse mt-3">
   <thead>
