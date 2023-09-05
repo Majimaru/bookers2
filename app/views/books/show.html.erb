@@ -19,20 +19,14 @@
             <%= @book_de.title %>
           <% end %>
         </td>
-        <td>
-          <%= @book_de.body %>
-        </td>
+        <td><%= @book_de.body %></td>
         <td id="favorite_btn_<%= @book_de.id %>">
           <%= render 'favorites/btn', book: @book_de %>
         </td>
         <td id="comment_count_<%= @book_de.id %>">
           コメント数:<%= @book_de.book_comments.count %>
         </td>
-
-        <td>
-          <%= render "rate", book: @book_de %>
-        </td>
-
+        <td><%= render "rate", book: @book_de %></td>
         <% if @user == current_user %>
           <td>
             <%= link_to "Edit", edit_book_path(@book_de), class: "btn btn-sm btn-success" %>
