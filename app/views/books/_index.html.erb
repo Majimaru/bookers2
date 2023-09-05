@@ -1,4 +1,7 @@
-<table class="table table-hover table-inverse">
+<%= link_to "新しい順", books_path(latest: "true") %> | 
+<%= link_to "評価の高い順", books_path(most_rated: "true") %>
+
+<table class="table table-hover table-inverse mt-3">
   <thead>
     <tr>
       <th></th>

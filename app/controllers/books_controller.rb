@@ -6,7 +6,15 @@ class BooksController < ApplicationController
     @user     = User.find(current_user.id)
     @book     = Book.new
     @book_new = Book.new
-    @books    = Book.all
+    # 新着順
+    if params[:latest]
+      @books = Book.all.order(created_at: :desc)
+    # 評価順
+    elsif params[:most_rated]
+      @books = Book.all.order(star: :desc)
+    else
+      @books    = Book.all
+    end
   end
 
   def show
