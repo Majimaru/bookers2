@@ -9,7 +9,7 @@ class Book < ApplicationRecord
   
   validates :star, numericality: {
     less_than_or_equal_to: 5,
-    greater_than_or_equal_to: 1
+    greater_than_or_equal_to: 0.5
   }, presence: true
   
   def favorited_by?(user)
