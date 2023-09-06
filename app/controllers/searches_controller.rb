@@ -15,6 +15,7 @@ class SearchesController < ApplicationController
     @model = "Tag"
     @content  = params[:content]
     @tags = Tag.where(name: params[:content])
+    
     render "search"
   end
   

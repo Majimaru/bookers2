@@ -22,7 +22,9 @@
         <td><%= @book_de.body %></td>
         <td>
           <% @tags.each do |tag| %>
-            <%= tag.name %>
+            <%= link_to tag_search_path(content:tag.name) do %>
+              <%= tag.name %>
+            <% end %>
             <% if @tags.count > 1 %>
               , 
             <% end %>
