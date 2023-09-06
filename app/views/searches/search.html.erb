@@ -5,8 +5,12 @@
         <h3>Users search for "<%= @content %>"</h3>
         <%= render "users/index", users: @users, hidden: "true" %>
       <% else %>
-        <h3>Books search for "<%= @word %>"</h3>
-        <%= render "books/index", books: @books, hidden: "true" %>
+        <h3>Books search for "<%= @content %>"</h3>
+        <% if @model == "Book" %>
+          <%= render "books/index", books: @books, hidden: "true" %>
+        <% else %>
+          <%= render "books/tag_index", tags: @tags %>
+        <% end %>
       <% end %>
     </div>
   </div>

@@ -10,4 +10,12 @@ class SearchesController < ApplicationController
       @books = Book.search_for(@content, params[:method])
     end
   end
+  
+  def tag_search
+    @model = "Tag"
+    @content  = params[:content]
+    @tags = Tag.where(name: params[:content])
+    render "search"
+  end
+  
 end
