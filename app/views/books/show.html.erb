@@ -20,6 +20,7 @@
           <% end %>
         </td>
         <td><%= @book_de.body %></td>
+        <td><%= @tag.name %></td>
         <td id="favorite_btn_<%= @book_de.id %>">
           <%= render 'favorites/btn', book: @book_de %>
         </td>

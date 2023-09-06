@@ -48,6 +48,10 @@
     <label for="inputOpinion">Opinion</label>
     <%= f.text_area :body, class: "form-control", id: "inputOpinion" %>
   </div>
+  <div class="form-group">
+    <label for="inputTag">Tag</label>
+    <%= f.text_field :name, class: "form-control", id: "inputTag" %>
+  </div>
   <div class="form-group row" id="star">
     <label for="inputRate" class="col-auto">Rate</label>
     <%= f.hidden_field :star, class: "form-control", id: "inputRate" %>
