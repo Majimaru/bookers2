@@ -14,7 +14,7 @@ class BooksController < ApplicationController
     @book_de = Book.find(params[:id])
     @user    = @book_de.user
     @book_comment = BookComment.new
-    @tag = @book_de.tags
+    @tags = @book_de.tags
   end
   
   def edit
@@ -23,16 +23,10 @@ class BooksController < ApplicationController
   
   def create
     @book = current_user.books.new(book_params)
-    # @tag = Tag.new(tag_params)
-    
-    # if @book.save && @tag.save
-      # @tag_relation = @book.tag_relationships.new(tag_id: @tag.id)
-      # @tag_relation.save
     tags = params[:book][:name].split(',')
     
     if @book.save
       @book.save_tags(tags)
-      byebug
       flash[:notice] = "You have created book successfully."
       redirect_to book_path(@book)
     else
