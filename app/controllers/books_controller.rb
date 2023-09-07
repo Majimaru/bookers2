@@ -7,6 +7,7 @@ class BooksController < ApplicationController
     @book     = Book.new
     @book_new = Book.new
     @books    = Book.all.order(params[:sort])
+    
   end
 
   def show
