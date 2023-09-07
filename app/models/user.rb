@@ -10,12 +10,19 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :book_comments, dependent: :destroy
   
+  # フォロー
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
-  has_many :reverse_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
-  
   has_many :followings, through: :relationships, source: :followed
+  
+  # フォロワー
+  has_many :reverse_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
   
+  # ページ閲覧数
+  has_many :view_counts, dependent: :destroy
+  has_many :book_views, through: :view_counts, source: :book
+  
+  # バリデーションチェック
   validates :name, uniqueness: true, length: {in: 2..20}
   validates :introduction, length: {maximum: 50}
   

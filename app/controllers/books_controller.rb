@@ -15,7 +15,10 @@ class BooksController < ApplicationController
     @book_de = Book.find(params[:id])
     @user    = @book_de.user
     @book_comment = BookComment.new
-    # @tags = @book_de.tags
+    
+    unless ViewCount.find_by(user_id: current_user.id, book_id: @book_de.id)
+      current_user.view_counts.create(book_id: @book_de.id)
+    end
   end
   
   def edit

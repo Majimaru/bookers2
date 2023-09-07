@@ -7,6 +7,10 @@ class Book < ApplicationRecord
   has_many :tag_relationships, dependent: :destroy
   has_many :tags, through: :tag_relationships, source: :tag
   
+  # ページ閲覧数
+  has_many :view_counts, dependent: :destroy
+  has_many :user_views, through: :view_counts, source: :user
+  
   validates :title, presence: true
   validates :body, presence: true, length: {maximum: 200}
   
