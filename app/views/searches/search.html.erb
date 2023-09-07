@@ -3,14 +3,10 @@
     <div class="col-12">
       <% if @model == "User" %>
         <h3>Users search for "<%= @content %>"</h3>
-        <%= render "users/index", users: @users, hidden: "true" %>
+        <%= render "users/index", users: @records, hidden: "true" %>
       <% else %>
         <h3>Books search for "<%= @content %>"</h3>
-        <% if @model == "Book" %>
-          <%= render "books/index", books: @books, hidden: "true" %>
-        <% else %>
-          <%= render "books/tag_index", tags: @tags %>
-        <% end %>
+          <%= render "books/index", books: @records, hidden: "true" %>
       <% end %>
     </div>
   </div>

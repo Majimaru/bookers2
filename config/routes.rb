@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   
   get '/home/about' => 'homes#about', as: 'about'
   get 'search' => 'searches#search', as: 'search'
-  get 'tag_search' => 'searches#tag_search', as: 'tag_search'
   
   resources :users, only: [:index, :show, :edit, :update] do
     resource :relationships, only: [:create, :destroy]

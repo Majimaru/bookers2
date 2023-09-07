@@ -1,22 +1,17 @@
 class SearchesController < ApplicationController
   
   def search
-    @model = params[:model]
+    @model    = params[:model]
     @content  = params[:content]
+    @method   = params[:method]
     
     if @model == "User"
-      @users = User.search_for(@content, params[:method])
-    else
-      @books = Book.search_for(@content, params[:method])
+      @records = User.search_for(@content, @method)
+    elsif @model == "Book"
+      @records = Book.search_for(@content, @method)
+    elsif @model == "Tag"
+      @records = Tag.search_for(@content, @method)
     end
-  end
-  
-  def tag_search
-    @model = "Tag"
-    @content  = params[:content]
-    @tags = Tag.where(name: params[:content])
-    
-    render "search"
   end
   
 end

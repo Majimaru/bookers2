@@ -21,15 +21,12 @@
         </td>
         <td><%= @book_de.body %></td>
         <td>
-          <% @tags.each do |tag| %>
-            <%= link_to tag_search_path(content:tag.name) do %>
-              <%= tag.name %>
+            <% @book_de.tags.each do |tag| %>
+              <li style="list-style: none;">
+                <%= link_to tag.name, search_path(content:tag.name, model:"Tag", method:"perfect") %>
+              </li>
             <% end %>
-            <% if @tags.count > 1 %>
-              , 
-            <% end %>
-          <% end %>
-        </td>
+          </td>
         <td id="favorite_btn_<%= @book_de.id %>">
           <%= render 'favorites/btn', book: @book_de %>
         </td>

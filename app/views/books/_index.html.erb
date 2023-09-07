@@ -1,5 +1,7 @@
-<%= link_to "新しい順", books_path(sort: "created_at desc") %> | 
-<%= link_to "評価の高い順", books_path(sort: "star desc") %>
+<% if hidden != "true" %>
+  <%= link_to "新しい順", books_path(sort: "created_at desc") %> | 
+  <%= link_to "評価の高い順", books_path(sort: "star desc") %>
+<% end %>
 
 <table class="table table-hover table-inverse mt-3">
   <thead>
@@ -8,9 +10,7 @@
       <th>Title</th>
       <th>Opinion</th>
       <th>Tag</th>
-      <% unless hidden == "true" %>
-        <th colspan="3"></th>
-      <% end %>
+      <th colspan="3"></th>
     </tr>
   </thead>
   <tbody>
@@ -25,19 +25,16 @@
         <td><%= book.body %></td>
         <td>
           <% book.tags.each do |tag| %>
-            <%= link_to tag_search_path(content:tag.name) do %>
-              <%= tag.name %>
-            <% end %>
-            , 
+            <li style="list-style: none;">
+              <%= link_to tag.name, search_path(content:tag.name, model:"Tag", method:"perfect") %>
+            </li>
           <% end %>
         </td>
-        <% unless hidden == "true" %>
-          <td id="favorite_btn_<%= book.id %>">
-            <%= render "favorites/btn", book: book %>
-          </td>
-          <td><%= "コメント数:#{book.book_comments.count}" %></td>
-          <td><%= render "books/rate", book: book %></td>
-        <% end %>
+        <td id="favorite_btn_<%= book.id %>">
+          <%= render "favorites/btn", book: book %>
+        </td>
+        <td><%= "コメント数:#{book.book_comments.count}" %></td>
+        <td><%= render "books/rate", book: book %></td>
       </tr>
     <% end %>
   </tbody>
