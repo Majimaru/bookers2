@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   devise_for :users
   
+  devise_scope :user do
+    post "users_guest_sign_in", to: "users/sessions#guest_sign_in"
+  end
+  
   get '/home/about' => 'homes#about', as: 'about'
   get 'search' => 'searches#search', as: 'search'
   
